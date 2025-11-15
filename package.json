@@ -1,0 +1,17 @@
+{
+  "name": "@bunstack/drop-version-specifiers-codemod",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "drop-version-specifiers": "./bin/drop-version-specifiers"
+  },
+  "dependencies": {
+    "@types/bun": "latest"
+  },
+  "scripts": {
+    "bun:build": "bun build ./lib/main.ts --target bun  --format=cjs --bytecode --outdir=build",
+    "bun:compile": "bun build --compile ./lib/main.ts --outfile=bin/drop-version-specifiers-codemod",
+    "bun:test": "bun test"
+  }
+}
