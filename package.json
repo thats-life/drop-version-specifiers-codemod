@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "bin": {
-    "drop-version-specifiers": "./bin/drop-version-specifiers"
+    "drop-version-specifiers": "./bin/drop-version-specifiers-codemod"
   },
   "dependencies": {
     "@types/bun": "latest"
@@ -12,6 +12,23 @@
   "scripts": {
     "bun:build": "bun build ./lib/main.ts --target bun  --format=cjs --bytecode --outdir=build",
     "bun:compile": "bun build --compile ./lib/main.ts --outfile=bin/drop-version-specifiers-codemod",
-    "bun:test": "bun test"
+    "bun:test": "bun test",
+    "preinstall": "bun run bun:build && bun run bun:compile"
+  },
+  "exports": {
+    ".": {
+      "bun": "./lib/main.ts",
+      "import": "./build/main.ts",
+      "require": "./build/main.cjs",
+      "types": "./lib/main.ts"
+    },
+    "./constants": {
+      "import": "./build/constants.ts",
+      "require": "./build/constants.cjs",
+      "types": "./lib/constants.ts"
+    },
+    "./preload": {
+      "default": "./bun.preload.js"
+    }
   }
 }
