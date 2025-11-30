@@ -1,5 +1,5 @@
 {
-  "name": "@bunstack/drop-version-specifiers-codemod",
+  "name": "drop-version-specifiers-codemod",
   "version": "0.1.0",
   "private": true,
   "type": "module",
